@@ -23,8 +23,52 @@ function ModifierIconeNote(note) {
     // On initialise les classes de l'élément à "vide"
     iconeNote.setAttribute("class", "");
 
+    if(iconeNote>0 && iconeNote<=19)
+    {
+        iconeNote="far fa-sad-cry"
+    }
+    else if(iconeNote>20 && iconeNote<=39)
+    {
+        iconeNote="far fa-sad-tear"
+    }
+    else if(iconeNote>40 && iconeNote<=59)
+    {
+        iconeNote="far fa-frown"
+    }
+    else if(iconeNote>60 && iconeNote<=79)
+    {
+        iconeNote="far fa-smile"
+    }
+    else if(iconeNote>80 && iconeNote<=100)
+    {
+        iconeNote="far fa-grin-squint-tears"
+    }
+    else
+    {
+        iconeNote=false;
+    }
     // Ajout des bonnes classes selon la valeur de la note
     // À COMPLÉTER
+}
+function Slider()
+{
+
+}
+function Cocher()
+{
+    let declaration = document.getElementById("declaration").checked;
+    champValide=false;
+
+    if(declaration)
+    {
+        champValide = true;
+    }
+    else
+    {
+        alert("Erreur! Veuillez cliquer sur la case pour continuer!")
+    }
+
+    return champValide;
 }
 
 /**
@@ -35,6 +79,15 @@ function ModifierIconeNote(note) {
 function AfficherMessage(element, message = '') {
     const zoneMessage = element.parentElement.querySelector('small');
     zoneMessage.innerHTML = message;
+    if(inputNoDA==false)
+    {
+        alert("Veuillez réviser les attentes!");
+    }
+    else
+    {
+        alert("c'est parfait!");
+    }
+
 }
 
 /**
@@ -48,3 +101,57 @@ function ObtenirNombreAleatoire(min, max) {
     max = Math.floor(max);
     return Math.floor(Math.random() * (max - min +1)) + min;
 }
+function IconeDa()
+{
+    let nombre=document.getElementById('inputNoDA');
+    addEventListener(inputNoDA, ValidationDa)
+    while(nombre==0)
+    {
+        if(valeur==true)
+        {
+            daIconeSucces++;
+        }
+        daIconeErreur++;
+        
+    }
+}
+function ValidationDa()
+{
+    let champValide = false;
+    let nombre = document.getElementById("numero_da")
+
+    let valeur = nom.value;
+    if(valeur =="")
+    {
+        alert("Le champ doit contenir des chiffres");
+        alert("Le champ doit être composé de 7 caractères");
+        alert("Le champ doit commencé par le chiffre 1 ou 2");
+    }
+    else if(REGEX_SEULEMENT_CHIFFRE)
+    {
+        champValide = true;
+    }
+    else
+    {
+        alert("Veuillez respectez les demandes...")
+    }
+
+    return champValide;
+}
+function ChangerImage()
+{
+    document.getElementById("myDIV").style.backgroundImage = "url(background01.jpg)";
+}
+function ValidationOnSubmit()
+{
+    let formValide=false;
+
+    let caseValide = Cocher(declaration);
+    let daValide= ValidationDa(inputNoDA);
+
+    formValide= caseValide && daValide;
+
+    return formValide;
+}
+
+

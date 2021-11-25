@@ -23,7 +23,7 @@
 
                 <h1 id="titre_formulaire">Grille d'auto-évaluation</h1>
 
-                <form id="formulaire_examen">
+                <form id="formulaire_examen" onsubmit="return Validation()">
                     
                     <div class="ligne_formulaire ligne_deux_colonnes">
                         <div class="colonne_gauche">
@@ -80,7 +80,7 @@
                 </form>
 
                 
-                <i class="fas fa-images" id="bouton_changer_image_fond"></i>
+                <i class="fas fa-images" id="bouton_changer_image_fond" onclick="ChangerImage()"></i>
             </div>
 
         </main>
